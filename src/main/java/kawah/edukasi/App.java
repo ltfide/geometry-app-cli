@@ -1,15 +1,13 @@
 package kawah.edukasi;
 
-import kawah.edukasi.entity.bangundatar.Segitiga;
+import kawah.edukasi.helper.Log;
 import kawah.edukasi.repository.bangundatar.PersegiRepository;
 import kawah.edukasi.repository.bangundatar.SegitigaRepository;
+import kawah.edukasi.util.PrintFormat;
 import kawah.edukasi.view.bangundatar.PersegiView;
 import kawah.edukasi.view.bangundatar.SegitigaService;
-import kawah.edukasi.util.InpuUtil;
 
-import java.util.Locale;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.Scanner;
 
 /**
  * @Author
@@ -28,28 +26,57 @@ public class App
         PersegiRepository persegiRepository = new PersegiRepository();
         PersegiView persegiView = new PersegiView(persegiRepository);
 
+        // Scanner
+        Scanner scanner = new Scanner(System.in);
+
         while (true) {
-            String input = InpuUtil.input().toLowerCase(Locale.ROOT);
-            Pattern pattern = Pattern.compile("(luas|keliling|alas|tinggi|diagonal).*", Pattern.CASE_INSENSITIVE);
-            Matcher matcher = pattern.matcher(input);
+            System.out.print("#>");
+            String input = scanner.nextLine().toLowerCase().trim();
 
-            if (input.startsWith("segitiga")) {
-                segitigaService.showSegitiga(matcher);
+            if (input.equals("help")) {
+                helpMenu();
+            } else if (input.startsWith("segitiga")) {
+                segitigaService.showSegitiga(input);
             } else if (input.startsWith("persegi")) {
-                persegiView.showPersegi(matcher);
-            } else {
-                System.out.println("Pilihan tidak dimengerti");
-            }
+                persegiView.showPersegi(input);
+            } else if (input.startsWith("persegipanjang")) {
 
+            } else if (input.equals("exit")) {
+                break;
+            } else {
+                System.out.println(Log.error("Pilihan tidak dimengerti."));
+            }
             System.out.print("\n");
         }
     }
 
     public static void helpMenu() {
-        System.out.println("Deskripsi:");
-        System.out.println("Daftar Perintah \n");
+        System.out.println(Log.info("Deskripsi:"));
+        System.out.println(" Daftar perintah");
 
-        System.out.println("Cara Pengunaan:");
-        System.out.println("list [options] \n");
+        System.out.println(Log.info("Format:"));
+        System.out.println(" <bangun datar/ruang> <nama rumus> <input>");
+
+        System.out.println(Log.info("Pilihan:"));
+
+        System.out.println(Log.warning(" Bangun datar"));
+        PrintFormat.printMenu("segitiga", "Menampilkan rumus-rumus segitiga");
+        PrintFormat.printMenu("persegi", "Menampilkan rumus-rumus persegi");
+        PrintFormat.printMenu("persegipanjang", "Menampilkan rumus-rumus persegi panjang");
+        PrintFormat.printMenu("jajargenjang", "Menampilkan rumus-rumus jajar genjang");
+        PrintFormat.printMenu("belahketupat", "Menampilkan rumus-rumus belahat ketupat");
+        PrintFormat.printMenu("layanglayang", "Menampilkan rumus-rumus layang layang");
+        PrintFormat.printMenu("trapesium", "Menampilkan rumus-rumus trapesium");
+        PrintFormat.printMenu("lingkaran", "Menampilkan rumus-rumus lingkaran");
+
+        System.out.println(Log.warning(" Bangun ruang"));
+        PrintFormat.printMenu("kubus", "Menampilkan rumus-rumus kubus");
+        PrintFormat.printMenu("balok", "Menampilkan rumus-rumus balok");
+        PrintFormat.printMenu("tabung", "Menampilkan rumus-rumus tabung");
+        PrintFormat.printMenu("bola", "Menampilkan rumus-rumus bola");
+
+        System.out.println(Log.info("Kata kunci:"));
+        PrintFormat.printMenu("exit", "Keluar dari program");
     }
+
 }

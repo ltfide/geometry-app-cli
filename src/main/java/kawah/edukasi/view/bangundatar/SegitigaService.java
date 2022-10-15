@@ -3,6 +3,7 @@ package kawah.edukasi.view.bangundatar;
 import kawah.edukasi.entity.bangundatar.Segitiga;
 import kawah.edukasi.helper.Log;
 import kawah.edukasi.repository.bangundatar.SegitigaRepository;
+import kawah.edukasi.util.PrintFormat;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -15,56 +16,43 @@ public class SegitigaService {
         this.segitigaRepository = segitigaRepository;
     }
 
-    public void showSegitiga(Matcher matcher) {
+    public void showSegitiga(String input) {
+        Pattern pattern = Pattern.compile("(luas|keliling|alas|tinggi).*");
+        Matcher matcher = pattern.matcher(input);
         if (matcher.find()) {
             String result = matcher.group();
             if (result.startsWith("luas")) showSegitigaLuas(result);
             if (result.startsWith("keliling")) showSegitigaKeliling(result);
             if (result.startsWith("alas")) showSegitigaAlas(result);
             if (result.startsWith("tinggi")) showSegitigaTinggi(result);
-        } else {
+        } else if (input.equals("segitiga") || input.equals("segitiga help")) {
             segitigaList();
+        } else {
+            System.out.println("Perintah \"" + input.substring(9) + "\"" + " tidak dimengerti.");
         }
     }
 
     public void segitigaList() {
-        System.out.println("Segitiga \n");
+        System.out.println(Log.info("Deskripsi:"));
+        PrintFormat.print("Segitiga", "Segitiga merupakan bangun datar yang dibatasi dengan");
+        PrintFormat.print("", "tiga buah sisi serta memiliki tiga buah titik sudut.");
 
         System.out.println(Log.info("Format:"));
         System.out.println(" segitiga <nama rumus> <input>");
 
         System.out.println(Log.info("Nama rumus:"));
-        System.out.printf(" %-15s", "luas");
-        System.out.println("Mencari luas segitiga " + Log.info("[L = 1/2 * a * t]"));
-
-        System.out.printf(" %-15s", "keliling");
-        System.out.println("Mencari keliling segitiga " + Log.info("[K = sisiA + sisiB + sisiC]"));
-
-        System.out.printf(" %-15s", "alas");
-        System.out.println("Mencari alas segitiga " + Log.info("[A = (2 * l) : t]"));
-
-        System.out.printf(" %-15s", "tinggi");
-        System.out.println("Mencari tinggi segitiga " + Log.info("[T = 2l / a]"));
+        PrintFormat.print("luas", "Mencari luas segitiga " + Log.info("[L = 1/2 * a * t]"));
+        PrintFormat.print("keliling", "Mencari keliling segitiga " + Log.info("[K = sisiA + sisiB + sisiC]"));
+        PrintFormat.print("alas", "Mencari alas segitiga " + Log.info("[A = (2 * l) : t]"));
+        PrintFormat.print("tinggi", "Mencari tinggi segitiga " + Log.info("[T = 2l / a]"));
 
         System.out.println(Log.info("Input:"));
-        System.out.printf(" %-15s", "a");
-        System.out.println("Nilai alas segitiga");
-
-        System.out.printf(" %-15s", "t");
-        System.out.println("Nilai tinggi segitiga");
-
-        System.out.printf(" %-15s", "l");
-        System.out.println("Nilai luas segitiga");
-
-        System.out.printf(" %-15s", "sisiA");
-        System.out.println("Nilai sisiA segitiga");
-
-        System.out.printf(" %-15s", "sisiB");
-        System.out.println("Nilai sisiB segitiga");
-
-        System.out.printf(" %-15s", "sisiC");
-        System.out.println("Nilai sisiC segitiga");
-
+        PrintFormat.print("a", "Nilai alas segitiga");
+        PrintFormat.print("t", "Nilai tinggi segitiga");
+        PrintFormat.print("l", "Nilai luas segitiga");
+        PrintFormat.print("sisiA", "Nilai sisiA segitiga");
+        PrintFormat.print("sisiB", "Nilai sisiB segitiga");
+        PrintFormat.print("sisiC", "Nilai sisiC segitiga");
     }
 
     public void showSegitigaLuas(String value) {
@@ -81,20 +69,17 @@ public class SegitigaService {
 
                 System.out.println("Luas Segitiga dengan alas " + alas + " dan tinggi " + tinggi + " adalah " + segitigaRepository.luas(segitiga));
             } else {
-                System.out.println("Input salah");
+                System.out.println(Log.error("Input salah"));
             }
         } else {
-            System.out.println("Luas segitiga = 1/2 * a * t \n");
+            System.out.println("Luas segitiga = 1/2 * a * t");
 
             System.out.println(Log.info("Format:"));
             System.out.println(" segitiga luas <a t>");
 
             System.out.println(Log.info("Input:"));
-            System.out.printf(" %-15s", "a");
-            System.out.println("Nilai alas segitiga");
-
-            System.out.printf(" %-15s", "t");
-            System.out.println("Nilai tinggi segitiga");
+            PrintFormat.print("a", "Nilai alas segitiga");
+            PrintFormat.print("t", "Nilai tinggi segitiga");
         }
     }
 
@@ -122,12 +107,9 @@ public class SegitigaService {
             System.out.println(" segitiga luas <a t>");
 
             System.out.println(Log.info("Input:"));
-            System.out.printf(" %-15s", "sisiA");
-            System.out.println("Nilai sisiA segitiga");
-            System.out.printf(" %-15s", "sisiB");
-            System.out.println("Nilai sisiB segitiga");
-            System.out.printf(" %-15s", "sisiC");
-            System.out.println("Nilai sisiC segitiga");
+            PrintFormat.print("sisiA", "Nilai sisiA segitiga");
+            PrintFormat.print("sisiB", "Nilai sisiB segitiga");
+            PrintFormat.print("sisiC", "Nilai sisiC segitiga");
         }
     }
 
@@ -154,11 +136,8 @@ public class SegitigaService {
             System.out.println(" segitiga alas <l t>");
 
             System.out.println(Log.info("Input:"));
-            System.out.printf(" %-15s", "l");
-            System.out.println("Nilai luas segitiga");
-
-            System.out.printf(" %-15s", "t");
-            System.out.println("Nilai tinggi segitiga");
+            PrintFormat.print("l", "Nilai luas segitiga");
+            PrintFormat.print("t", "Nilai tinggi segitiga");
         }
     }
 
@@ -178,7 +157,7 @@ public class SegitigaService {
 
                 System.out.println("Tinggi Segitiga dengan luas " + luas + " dan alas " + alas + " adalah " + segitigaRepository.tinggi(segitiga));
             } else {
-                System.out.println("Input salah");
+                System.out.println(Log.error("Input salah"));
             }
         } else {
             System.out.println("Tinggi segitiga = 2l / a \n");
@@ -187,11 +166,8 @@ public class SegitigaService {
             System.out.println(" segitiga tinggi <l t>");
 
             System.out.println(Log.info("Input:"));
-            System.out.printf(" %-15s", "l");
-            System.out.println("Nilai luas segitiga");
-
-            System.out.printf(" %-15s", "a");
-            System.out.println("Nilai alas segitiga");
+            PrintFormat.print("l", "Nilai luas segitiga");
+            PrintFormat.print("a", "Nilai alas segitiga");
         }
     }
 

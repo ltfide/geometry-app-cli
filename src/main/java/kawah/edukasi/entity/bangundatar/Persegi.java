@@ -5,6 +5,7 @@ public class Persegi {
     private int panjang;
     private int lebar;
     private int sisi;
+    private int luas;
 
     public Persegi(int sisi) {
         this.sisi = sisi;
@@ -37,5 +38,13 @@ public class Persegi {
 
     public void setSisi(int sisi) {
         this.sisi = sisi;
+    }
+
+    public int getLuas() {
+        return luas;
+    }
+
+    public void setLuas(int luas) {
+        this.luas = luas;
     }
 }

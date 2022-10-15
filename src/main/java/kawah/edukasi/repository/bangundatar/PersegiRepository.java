@@ -12,12 +12,12 @@ public class PersegiRepository {
         return 4 * persegi.getSisi();
     }
 
-    public void sisi() {
-
+    public double sisi(Persegi persegi) {
+        return Math.sqrt(persegi.getLuas());
     }
 
-    public void diagonal() {
-
+    public double diagonal(Persegi persegi) {
+        return persegi.getSisi() * Math.sqrt(2);
     }
 
 }
