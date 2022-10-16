@@ -34,6 +34,12 @@ public class App
         // Layang Layang
         LayangLayangRepository layangLayangRepository = new LayangLayangRepository();
         LayangLayangView layangLayangView = new LayangLayangView(layangLayangRepository);
+        // Trapesium
+        TrapesiumRepository trapesiumRepository = new TrapesiumRepository();
+        TrapesiumView trapesiumView = new TrapesiumView(trapesiumRepository);
+        // Lingkaran
+        LingkaranRepository lingkaranRepository = new LingkaranRepository();
+        LingkaranView lingkaranView = new LingkaranView(lingkaranRepository);
 
         // Scanner
         Scanner scanner = new Scanner(System.in);
@@ -56,6 +62,10 @@ public class App
                 belahKetupatView.showBelahKetupat(input);
             } else if (input.startsWith("layanglayang")) {
                 layangLayangView.showLayangLayang(input);
+            } else if (input.startsWith("trapesium")) {
+                trapesiumView.showTrapesium(input);
+            } else if (input.startsWith("lingkaran")) {
+                lingkaranView.showLingkaran(input);
             } else if (input.equals("exit")) {
                 break;
             } else {
