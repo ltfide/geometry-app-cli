@@ -35,7 +35,7 @@ public class PersegiView {
 
     public void showPersegiFormat() {
         System.out.println(Log.info("Deskripsi:"));
-        PrintFormat.print("Persegi", "Persegi merupakan turunan dari segi empat yang mempunyai");
+        PrintFormat.print("Persegi", "Merupakan turunan dari segi empat yang mempunyai");
         PrintFormat.print("", "ciri khusus keempat sisinya sama panjang");
         PrintFormat.print("", "dan keempat sudutnya siku-siku (90°)");
 
@@ -132,7 +132,7 @@ public class PersegiView {
             result = matcher.group().split(" ");
             if (result.length == 1) {
                 int luas = Integer.valueOf(result[0]);
-                Persegi persegi = new Persegi(luas);
+                Persegi persegi = new Persegi();
                 persegi.setLuas(luas);
 
                 StringBuilder stringBuilder = new StringBuilder();

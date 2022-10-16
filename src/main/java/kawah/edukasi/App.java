@@ -1,11 +1,9 @@
 package kawah.edukasi;
 
 import kawah.edukasi.helper.Log;
-import kawah.edukasi.repository.bangundatar.PersegiRepository;
-import kawah.edukasi.repository.bangundatar.SegitigaRepository;
+import kawah.edukasi.repository.bangundatar.*;
 import kawah.edukasi.util.PrintFormat;
-import kawah.edukasi.view.bangundatar.PersegiView;
-import kawah.edukasi.view.bangundatar.SegitigaService;
+import kawah.edukasi.view.bangundatar.*;
 
 import java.util.Scanner;
 
@@ -20,11 +18,22 @@ public class App
     {
         // segitiga
         SegitigaRepository segitigaRepository = new SegitigaRepository();
-        SegitigaService segitigaService = new SegitigaService(segitigaRepository);
-
+        SegitigaView segitigaService = new SegitigaView(segitigaRepository);
         // Persegi
         PersegiRepository persegiRepository = new PersegiRepository();
         PersegiView persegiView = new PersegiView(persegiRepository);
+        // Persegi Panjang
+        PersegiPanjangRepository persegiPanjangRepository = new PersegiPanjangRepository();
+        PersegiPanjangView persegiPanjangView = new PersegiPanjangView(persegiPanjangRepository);
+        // Jajar Genjang
+        JajarGenjangRepository jajarGenjangRepository = new JajarGenjangRepository();
+        JajarGenjangView jajarGenjangView = new JajarGenjangView(jajarGenjangRepository);
+        // Belah Ketupat
+        BelahKetupatRepository belahKetupatRepository = new BelahKetupatRepository();
+        BelahKetupatView belahKetupatView = new BelahKetupatView(belahKetupatRepository);
+        // Layang Layang
+        LayangLayangRepository layangLayangRepository = new LayangLayangRepository();
+        LayangLayangView layangLayangView = new LayangLayangView(layangLayangRepository);
 
         // Scanner
         Scanner scanner = new Scanner(System.in);
@@ -37,10 +46,16 @@ public class App
                 helpMenu();
             } else if (input.startsWith("segitiga")) {
                 segitigaService.showSegitiga(input);
+            } else if (input.startsWith("persegipanjang")) {
+                persegiPanjangView.showPersegiPanjang(input);
             } else if (input.startsWith("persegi")) {
                 persegiView.showPersegi(input);
-            } else if (input.startsWith("persegipanjang")) {
-
+            } else if (input.startsWith("jajargenjang")) {
+                jajarGenjangView.showJajarGenjang(input);
+            } else if (input.startsWith("belahketupat")) {
+                belahKetupatView.showBelahKetupat(input);
+            } else if (input.startsWith("layanglayang")) {
+                layangLayangView.showLayangLayang(input);
             } else if (input.equals("exit")) {
                 break;
             } else {

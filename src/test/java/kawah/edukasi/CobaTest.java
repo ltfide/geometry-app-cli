@@ -35,4 +35,9 @@ public class CobaTest {
         }
     }
 
+    @Test
+    void testOutput() {
+        System.out.println("√");
+    }
+
 }

@@ -7,6 +7,9 @@ public class Persegi {
     private int sisi;
     private int luas;
 
+    public Persegi() {
+    }
+
     public Persegi(int sisi) {
         this.sisi = sisi;
     }

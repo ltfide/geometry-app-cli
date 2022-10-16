@@ -8,11 +8,11 @@ import kawah.edukasi.util.PrintFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class SegitigaService {
+public class SegitigaView {
 
     private SegitigaRepository segitigaRepository;
 
-    public SegitigaService(SegitigaRepository segitigaRepository) {
+    public SegitigaView(SegitigaRepository segitigaRepository) {
         this.segitigaRepository = segitigaRepository;
     }
 
@@ -34,7 +34,7 @@ public class SegitigaService {
 
     public void segitigaList() {
         System.out.println(Log.info("Deskripsi:"));
-        PrintFormat.print("Segitiga", "Segitiga merupakan bangun datar yang dibatasi dengan");
+        PrintFormat.print("Segitiga", "Merupakan bangun datar yang dibatasi dengan");
         PrintFormat.print("", "tiga buah sisi serta memiliki tiga buah titik sudut.");
 
         System.out.println(Log.info("Format:"));
@@ -104,7 +104,7 @@ public class SegitigaService {
             System.out.println("Keliling segitiga = sisiA + sisiB + sisiC \n");
 
             System.out.println(Log.info("Format:"));
-            System.out.println(" segitiga luas <a t>");
+            System.out.println(" segitiga keliling <sisiA sisiB sisiC>");
 
             System.out.println(Log.info("Input:"));
             PrintFormat.print("sisiA", "Nilai sisiA segitiga");
