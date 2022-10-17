@@ -1,8 +1,6 @@
 package kawah.edukasi.repository.bangundatar;
 
 import kawah.edukasi.entity.bangundatar.Lingkaran;
-import kawah.edukasi.helper.Log;
-import kawah.edukasi.util.PrintFormat;
 
 public class LingkaranRepository {
 

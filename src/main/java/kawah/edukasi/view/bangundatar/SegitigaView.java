@@ -1,7 +1,7 @@
 package kawah.edukasi.view.bangundatar;
 
 import kawah.edukasi.entity.bangundatar.Segitiga;
-import kawah.edukasi.helper.Log;
+import kawah.edukasi.util.Log;
 import kawah.edukasi.repository.bangundatar.SegitigaRepository;
 import kawah.edukasi.util.PrintFormat;
 

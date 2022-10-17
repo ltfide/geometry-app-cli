@@ -1,9 +1,17 @@
 package kawah.edukasi;
 
-import kawah.edukasi.helper.Log;
+import kawah.edukasi.util.Log;
 import kawah.edukasi.repository.bangundatar.*;
-import kawah.edukasi.util.PrintFormat;
+import kawah.edukasi.repository.bangunruang.BalokRepository;
+import kawah.edukasi.repository.bangunruang.BolaRepository;
+import kawah.edukasi.repository.bangunruang.KubusRepository;
+import kawah.edukasi.repository.bangunruang.TabungRepository;
+import kawah.edukasi.view.HelpMenu;
 import kawah.edukasi.view.bangundatar.*;
+import kawah.edukasi.view.bangunruang.BalokView;
+import kawah.edukasi.view.bangunruang.BolaView;
+import kawah.edukasi.view.bangunruang.KubusView;
+import kawah.edukasi.view.bangunruang.TabungView;
 
 import java.util.Scanner;
 
@@ -16,6 +24,7 @@ public class App
 {
     public static void main( String[] args )
     {
+        // Bangun Datar
         // segitiga
         SegitigaRepository segitigaRepository = new SegitigaRepository();
         SegitigaView segitigaService = new SegitigaView(segitigaRepository);
@@ -41,6 +50,20 @@ public class App
         LingkaranRepository lingkaranRepository = new LingkaranRepository();
         LingkaranView lingkaranView = new LingkaranView(lingkaranRepository);
 
+        // Bangun Ruang
+        // Kubus
+        KubusRepository kubusRepository = new KubusRepository();
+        KubusView kubusView = new KubusView(kubusRepository);
+        // Balok
+        BalokRepository balokRepository = new BalokRepository();
+        BalokView balokView = new BalokView(balokRepository);
+        // Tabung
+        TabungRepository tabungRepository = new TabungRepository();
+        TabungView tabungView = new TabungView(tabungRepository);
+        // Bola
+        BolaRepository bolaRepository = new BolaRepository();
+        BolaView bolaView = new BolaView(bolaRepository);
+
         // Scanner
         Scanner scanner = new Scanner(System.in);
 
@@ -49,7 +72,7 @@ public class App
             String input = scanner.nextLine().toLowerCase().trim();
 
             if (input.equals("help")) {
-                helpMenu();
+                HelpMenu.show();
             } else if (input.startsWith("segitiga")) {
                 segitigaService.showSegitiga(input);
             } else if (input.startsWith("persegipanjang")) {
@@ -66,6 +89,14 @@ public class App
                 trapesiumView.showTrapesium(input);
             } else if (input.startsWith("lingkaran")) {
                 lingkaranView.showLingkaran(input);
+            } else if (input.startsWith("kubus")) {
+                kubusView.showKubus(input);
+            } else if (input.startsWith("balok")) {
+                balokView.showBalok(input);
+            } else if (input.startsWith("tabung")) {
+                tabungView.showTabung(input);
+            } else if (input.startsWith("bola")) {
+                bolaView.showBola(input);
             } else if (input.equals("exit")) {
                 break;
             } else {
@@ -73,35 +104,6 @@ public class App
             }
             System.out.print("\n");
         }
-    }
-
-    public static void helpMenu() {
-        System.out.println(Log.info("Deskripsi:"));
-        System.out.println(" Daftar perintah");
-
-        System.out.println(Log.info("Format:"));
-        System.out.println(" <bangun datar/ruang> <nama rumus> <input>");
-
-        System.out.println(Log.info("Pilihan:"));
-
-        System.out.println(Log.warning(" Bangun datar"));
-        PrintFormat.printMenu("segitiga", "Menampilkan rumus-rumus segitiga");
-        PrintFormat.printMenu("persegi", "Menampilkan rumus-rumus persegi");
-        PrintFormat.printMenu("persegipanjang", "Menampilkan rumus-rumus persegi panjang");
-        PrintFormat.printMenu("jajargenjang", "Menampilkan rumus-rumus jajar genjang");
-        PrintFormat.printMenu("belahketupat", "Menampilkan rumus-rumus belahat ketupat");
-        PrintFormat.printMenu("layanglayang", "Menampilkan rumus-rumus layang layang");
-        PrintFormat.printMenu("trapesium", "Menampilkan rumus-rumus trapesium");
-        PrintFormat.printMenu("lingkaran", "Menampilkan rumus-rumus lingkaran");
-
-        System.out.println(Log.warning(" Bangun ruang"));
-        PrintFormat.printMenu("kubus", "Menampilkan rumus-rumus kubus");
-        PrintFormat.printMenu("balok", "Menampilkan rumus-rumus balok");
-        PrintFormat.printMenu("tabung", "Menampilkan rumus-rumus tabung");
-        PrintFormat.printMenu("bola", "Menampilkan rumus-rumus bola");
-
-        System.out.println(Log.info("Kata kunci:"));
-        PrintFormat.printMenu("exit", "Keluar dari program");
     }
 
 }

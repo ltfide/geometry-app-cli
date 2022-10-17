@@ -1,8 +1,7 @@
 package kawah.edukasi.view.bangundatar;
 
-import kawah.edukasi.entity.bangundatar.LayangLayang;
 import kawah.edukasi.entity.bangundatar.Trapesium;
-import kawah.edukasi.helper.Log;
+import kawah.edukasi.util.Log;
 import kawah.edukasi.repository.bangundatar.TrapesiumRepository;
 import kawah.edukasi.util.PrintFormat;
 
@@ -94,9 +93,9 @@ public class TrapesiumView {
             System.out.println(" trapesium luas <d1 d2>");
 
             System.out.println(Log.info("Input:"));
-            PrintFormat.print("alasA", "Nilai alasA layanglayang");
-            PrintFormat.print("alasB", "Nilai alasB layanglayang");
-            PrintFormat.print("tinggi", "Nilai tinggi layanglayang");
+            PrintFormat.print("alasA", "Nilai alasA trapesium");
+            PrintFormat.print("alasB", "Nilai alasB trapesium");
+            PrintFormat.print("tinggi", "Nilai tinggi trapesium");
         }
     }
 

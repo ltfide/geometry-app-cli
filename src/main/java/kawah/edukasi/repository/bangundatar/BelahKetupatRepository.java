@@ -5,7 +5,7 @@ import kawah.edukasi.entity.bangundatar.BelahKetupat;
 public class BelahKetupatRepository {
 
     public double luas(BelahKetupat belahKetupat) {
-        return 0.5 * belahKetupat.getDiagonal1() * belahKetupat.getDiagonal2();
+        return Math.floor(0.5 * belahKetupat.getDiagonal1() * belahKetupat.getDiagonal2());
     }
 
     public int keliling(BelahKetupat belahKetupat) {

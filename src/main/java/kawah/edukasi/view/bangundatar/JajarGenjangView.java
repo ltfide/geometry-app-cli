@@ -1,8 +1,7 @@
 package kawah.edukasi.view.bangundatar;
 
 import kawah.edukasi.entity.bangundatar.JajarGenjang;
-import kawah.edukasi.entity.bangundatar.Persegi;
-import kawah.edukasi.helper.Log;
+import kawah.edukasi.util.Log;
 import kawah.edukasi.repository.bangundatar.JajarGenjangRepository;
 import kawah.edukasi.util.PrintFormat;
 
